@@ -1,4 +1,8 @@
 
+#!/usr/bin/python
+import time
+
+
 #Exercice_1:
 def compte_mots(phrase):
 
@@ -8,7 +12,7 @@ def compte_mots(phrase):
 
 #Exercice_2:
 
-def replace_multiple(s1, s2, n):
+def replace_multiple1(s1, s2, n):
     l1 = list(s1)
     l2 = list(s2)
 
@@ -24,7 +28,16 @@ def replace_multiple(s1, s2, n):
 
     return "".join(l1)
 
-
+def remplace_multiple2(s1,s2,n):
+    s=s1
+    n1=n
+    for i in range (2,len(s2)+1):
+        s=s[0:n]+s2[i-2]+s[n+1:len(s1)+1]
+        n=n1
+        n*=i
+        if(n>len(s1)):
+            return s+s2[(i-1):len(s2)+1]
+    return s
 
 #Exercice_3:
 
@@ -76,13 +89,16 @@ if __name__ == '__main__':
     print(compte_mots(("hsdyzag zeskehgseufu wdkfjshi skdjfh kdsjn kehb")))
 
 #exo_2
-    test1 = replace_multiple('', '', 2)
-    test2 = replace_multiple('abacus', 'oiseau', 2)
-    test3 = replace_multiple('hirondelles', 'nid', 3)
+    test1 = replace_multiple1('', '', 2)
+    test2 = replace_multiple1('abacus', 'oiseau', 2)
+    test3 = replace_multiple1('hirondelles', 'nid', 3)
     print(test1, test1 == '')
     print(test2, test2 == 'abocisseau')
     print(test3, test3 == 'hirnndillds')
 
+    print(remplace_multiple2('', '', 2))
+    print(remplace_multiple2('abacus', 'oiseau', 2))
+    print(remplace_multiple2('melahi', 'tachour', 3))
 #Exo_3
 ##Enoncé 1
 
@@ -99,6 +115,14 @@ if __name__ == '__main__':
 
 #Enoncé_3
 #Enoncé_4
+#Enoncé_5
+    """
+# measure process time
+    t0 = time.clock()
+    serie(100)
+    print (time.clock(), "seconds process time")
+    """
+
 
 #Exo_4
     print(fact1(1))
